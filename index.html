@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quotes & jokes</title>
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-    <style>
+  <title>Quotes & Jokes</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -130,16 +130,16 @@
   <div class="subtitle">Motivation & Laughter Delivered</div>
 
   <div class="btns">
-    <button aria-label="Show Quotes" onclick="showSection('quotes')">Quotes</button>
-    <button aria-label="Show Jokes" onclick="showSection('jokes')">Jokes</button>
+    <button onclick="showSection('quotes')">Quotes</button>
+    <button onclick="showSection('jokes')">Jokes</button>
   </div>
 
-  <section id="quotes" class="section active" aria-live="polite" aria-atomic="true"></section>
-  <section id="jokes" class="section" aria-live="polite" aria-atomic="true"></section>
+  <section id="quotes" class="section active"></section>
+  <section id="jokes" class="section"></section>
 
-  <div class="timer-container" aria-label="Countdown to next refresh">
+  <div class="timer-container">
     <div class="timer-text" id="countdown">Loading timer...</div>
-    <div class="progress-bar" aria-hidden="true">
+    <div class="progress-bar">
       <div class="progress-bar-inner" id="progress"></div>
     </div>
   </div>
@@ -148,42 +148,72 @@
   const quotes = [
     "Believe you can and you're halfway there. – Theodore Roosevelt",
     "The only way to do great work is to love what you do. – Steve Jobs",
-    "Do not wait for the perfect time. Take the time and make it perfect.",
+    "Push yourself, because no one else is going to do it for you.",
+    "Dream big. Start small. Act now.",
+    "Don't watch the clock; do what it does. Keep going. – Sam Levenson",
     "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill",
     "You miss 100% of the shots you don’t take. – Wayne Gretzky",
-    "Don't watch the clock; do what it does. Keep going. – Sam Levenson",
-    "Everything you’ve ever wanted is on the other side of fear. – George Addair",
-    "Push yourself, because no one else is going to do it for you.",
-    "Great things never come from comfort zones.",
-    "Dream big. Start small. Act now.",
-    "Believe in yourself and all that you are. – Christian D. Larson",
+    "Do not wait for the perfect time. Take the time and make it perfect.",
+    "Be stronger than your excuses.",
+    "Doubt kills more dreams than failure ever will.",
+    "Act as if what you do makes a difference. It does. – William James",
+    "It always seems impossible until it’s done. – Nelson Mandela",
     "Don’t limit your challenges. Challenge your limits.",
-    "Be the change that you wish to see in the world. – Mahatma Gandhi",
-    "The harder you work for something, the greater you’ll feel when you achieve it.",
-    "Dream it. Wish it. Do it.",
+    "You were born to be real, not perfect.",
+    "Work hard in silence, let your success be the noise.",
+    "Little by little, a little becomes a lot.",
+    "Discipline is choosing between what you want now and what you want most.",
+    "Strive for progress, not perfection.",
+    "The future depends on what you do today. – Mahatma Gandhi",
+    "What you get by achieving your goals is not as important as what you become.",
+    "Difficult roads often lead to beautiful destinations.",
+    "The best way to predict the future is to create it.",
+    "Don’t wish it were easier. Wish you were better.",
+    "Success doesn’t come from what you do occasionally. It comes from what you do consistently.",
+    "When you feel like quitting, remember why you started.",
+    "If it doesn’t challenge you, it won’t change you.",
+    "Keep your face always toward the sunshine—and shadows will fall behind you. – Walt Whitman",
+    "Energy and persistence conquer all things. – Benjamin Franklin",
+    "Either you run the day or the day runs you. – Jim Rohn",
+    "Everything you’ve ever wanted is on the other side of fear. – George Addair"
   ];
 
   const jokes = [
     "Why don’t scientists trust atoms? Because they make up everything!",
-    "I told my wife she was drawing her eyebrows too high. She looked surprised.",
     "Why did the scarecrow win an award? Because he was outstanding in his field!",
-    "What’s orange and sounds like a parrot? A carrot.",
-    "Why did the coffee file a police report? It got mugged.",
+    "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+    "Why can’t your nose be 12 inches long? Because then it would be a foot.",
     "Parallel lines have so much in common… It’s a shame they’ll never meet.",
     "I’m reading a book on anti-gravity. It’s impossible to put down.",
     "Why don’t skeletons fight each other? They don’t have the guts.",
-    "What do you call cheese that isn't yours? Nacho cheese!",
-    "Why can’t your nose be 12 inches long? Because then it would be a foot.",
-    "Why did the math book look sad? Because it had too many problems.",
-    "Why do bicycles fall over? Because they are two-tired!",
+    "What’s orange and sounds like a parrot? A carrot.",
     "I would tell you a joke about construction, but I'm still working on it.",
-    "Why did the cookie go to the hospital? Because he felt crummy.",
+    "Why do bicycles fall over? Because they are two-tired!",
     "I told a joke about a roof once… it went over people’s heads.",
+    "Why did the math book look sad? Because it had too many problems.",
+    "What do you call fake spaghetti? An impasta.",
+    "What do you call cheese that isn't yours? Nacho cheese!",
+    "Why did the cookie go to the hospital? Because he felt crummy.",
+    "Why don’t eggs tell jokes? They’d crack each other up.",
+    "Why couldn’t the leopard play hide and seek? Because he was always spotted.",
+    "I ate a clock yesterday—it was very time-consuming.",
+    "What do you call a fish wearing a bowtie? Sofishticated.",
+    "I only know 25 letters of the alphabet. I don’t know y.",
+    "How does a penguin build its house? Igloos it together.",
+    "Why did the golfer bring two pants? In case he got a hole in one.",
+    "I used to be addicted to soap, but I’m clean now.",
+    "I asked my dog what's two minus two. He said nothing.",
+    "Why don't oysters share their pearls? Because they're shellfish.",
+    "Why was the stadium so cool? Because it was filled with fans.",
+    "Why can’t a nose be 12 inches long? Because then it would be a foot.",
+    "Why did the man put his money in the freezer? He wanted cold hard cash.",
+    "How do you organize a space party? You planet.",
+    "What did the grape do when he got stepped on? Nothing but let out a little wine."
   ];
 
   function getDailyIndices(total, count = 2) {
-    const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
-    let base = (dayOfYear * count) % total;
+    const day = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+    let base = (day * count) % total;
     return [base, (base + 1) % total];
   }
 
