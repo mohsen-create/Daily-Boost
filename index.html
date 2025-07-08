@@ -123,29 +123,27 @@
       .progress-bar { width: 280px; }
     }
 
-    /* Floating Contact Button */
-    .floating-contact {
+    /* Bottom Left Button */
+    .corner-button {
       position: fixed;
       bottom: 20px;
       left: 20px;
       z-index: 999;
     }
-
-    .floating-contact a {
+    .corner-button a {
       text-decoration: none;
-      background: #ffffff33;
-      color: #ffffff;
+      background: #ffffff22;
+      color: #f0f0f5;
       padding: 10px 18px;
-      border-radius: 20px;
-      font-size: 0.95rem;
+      border-radius: 14px;
+      font-size: 0.9rem;
       font-weight: 500;
-      backdrop-filter: blur(8px);
-      border: 1px solid #ffffff44;
-      transition: all 0.3s ease;
+      backdrop-filter: blur(6px);
+      border: 1px solid #ffffff33;
+      transition: 0.3s ease all;
     }
-
-    .floating-contact a:hover {
-      background: #ffffff66;
+    .corner-button a:hover {
+      background: #ffffff55;
       color: #5a4ea3;
     }
   </style>
@@ -170,70 +168,133 @@
     </div>
   </div>
 
-  <!-- Floating Contact Button -->
-  <div class="floating-contact">
+  <!-- Bottom Left Reach Out Button -->
+  <div class="corner-button">
     <a href="https://mohsen-create.github.io/Reach-Out/" target="_blank">Reach Out</a>
   </div>
 
-<script>
-  const quotes = [...]; // You already have this
-  const jokes = [...];  // You already have this
+  <script>
+    const quotes = [
+      "Believe you can and you're halfway there. – Theodore Roosevelt",
+      "The only way to do great work is to love what you do. – Steve Jobs",
+      "Push yourself, because no one else is going to do it for you.",
+      "Dream big. Start small. Act now.",
+      "Don't watch the clock; do what it does. Keep going. – Sam Levenson",
+      "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill",
+      "You miss 100% of the shots you don’t take. – Wayne Gretzky",
+      "Do not wait for the perfect time. Take the time and make it perfect.",
+      "Be stronger than your excuses.",
+      "Doubt kills more dreams than failure ever will.",
+      "Act as if what you do makes a difference. It does. – William James",
+      "It always seems impossible until it’s done. – Nelson Mandela",
+      "Don’t limit your challenges. Challenge your limits.",
+      "You were born to be real, not perfect.",
+      "Work hard in silence, let your success be the noise.",
+      "Little by little, a little becomes a lot.",
+      "Discipline is choosing between what you want now and what you want most.",
+      "Strive for progress, not perfection.",
+      "The future depends on what you do today. – Mahatma Gandhi",
+      "What you get by achieving your goals is not as important as what you become.",
+      "Difficult roads often lead to beautiful destinations.",
+      "The best way to predict the future is to create it.",
+      "Don’t wish it were easier. Wish you were better.",
+      "Success doesn’t come from what you do occasionally. It comes from what you do consistently.",
+      "When you feel like quitting, remember why you started.",
+      "If it doesn’t challenge you, it won’t change you.",
+      "Keep your face always toward the sunshine—and shadows will fall behind you. – Walt Whitman",
+      "Energy and persistence conquer all things. – Benjamin Franklin",
+      "Either you run the day or the day runs you. – Jim Rohn",
+      "Everything you’ve ever wanted is on the other side of fear. – George Addair"
+    ];
 
-  function getDailyIndices(total, count = 2) {
-    const day = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
-    let base = (day * count) % total;
-    return [base, (base + 1) % total];
-  }
+    const jokes = [
+      "Why don’t scientists trust atoms? Because they make up everything!",
+      "Why did the scarecrow win an award? Because he was outstanding in his field!",
+      "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+      "Why can’t your nose be 12 inches long? Because then it would be a foot.",
+      "Parallel lines have so much in common… It’s a shame they’ll never meet.",
+      "I’m reading a book on anti-gravity. It’s impossible to put down.",
+      "Why don’t skeletons fight each other? They don’t have the guts.",
+      "What’s orange and sounds like a parrot? A carrot.",
+      "I would tell you a joke about construction, but I'm still working on it.",
+      "Why do bicycles fall over? Because they are two-tired!",
+      "I told a joke about a roof once… it went over people’s heads.",
+      "Why did the math book look sad? Because it had too many problems.",
+      "What do you call fake spaghetti? An impasta.",
+      "What do you call cheese that isn't yours? Nacho cheese!",
+      "Why did the cookie go to the hospital? Because he felt crummy.",
+      "Why don’t eggs tell jokes? They’d crack each other up.",
+      "Why couldn’t the leopard play hide and seek? Because he was always spotted.",
+      "I ate a clock yesterday—it was very time-consuming.",
+      "What do you call a fish wearing a bowtie? Sofishticated.",
+      "I only know 25 letters of the alphabet. I don’t know y.",
+      "How does a penguin build its house? Igloos it together.",
+      "Why did the golfer bring two pants? In case he got a hole in one.",
+      "I used to be addicted to soap, but I’m clean now.",
+      "I asked my dog what's two minus two. He said nothing.",
+      "Why don't oysters share their pearls? Because they're shellfish.",
+      "Why was the stadium so cool? Because it was filled with fans.",
+      "Why can’t a nose be 12 inches long? Because then it would be a foot.",
+      "Why did the man put his money in the freezer? He wanted cold hard cash.",
+      "How do you organize a space party? You planet.",
+      "What did the grape do when he got stepped on? Nothing but let out a little wine."
+    ];
 
-  function displayEntries(type, data) {
-    const container = document.getElementById(type);
-    container.innerHTML = '';
-    const indices = getDailyIndices(data.length, 2);
-    indices.forEach(i => {
-      const div = document.createElement('div');
-      div.className = 'entry';
-      div.textContent = data[i];
-      container.appendChild(div);
-    });
-  }
-
-  function showSection(type) {
-    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-    document.getElementById(type).classList.add('active');
-  }
-
-  function startCountdown() {
-    const countdownEl = document.getElementById('countdown');
-    const progressBar = document.getElementById('progress');
-
-    function update() {
-      const now = new Date();
-      const midnight = new Date();
-      midnight.setHours(24, 0, 0, 0);
-      const diff = midnight - now;
-
-      const hrs = String(Math.floor(diff / 3600000)).padStart(2, '0');
-      const mins = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-      const secs = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
-
-      countdownEl.textContent = `Next refresh in: ${hrs}:${mins}:${secs}`;
-      const passed = (24 * 3600 * 1000 - diff);
-      const percent = (passed / (24 * 3600 * 1000)) * 100;
-      progressBar.style.width = percent + '%';
-
-      if (diff <= 1000) {
-        displayEntries('quotes', quotes);
-        displayEntries('jokes', jokes);
-      }
+    function getDailyIndices(total, count = 2) {
+      const day = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+      let base = (day * count) % total;
+      return [base, (base + 1) % total];
     }
-    update();
-    setInterval(update, 1000);
-  }
 
-  displayEntries('quotes', quotes);
-  displayEntries('jokes', jokes);
-  startCountdown();
-</script>
+    function displayEntries(type, data) {
+      const container = document.getElementById(type);
+      container.innerHTML = '';
+      const indices = getDailyIndices(data.length, 2);
+      indices.forEach(i => {
+        const div = document.createElement('div');
+        div.className = 'entry';
+        div.textContent = data[i];
+        container.appendChild(div);
+      });
+    }
 
+    function showSection(type) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(type).classList.add('active');
+    }
+
+    function startCountdown() {
+      const countdownEl = document.getElementById('countdown');
+      const progressBar = document.getElementById('progress');
+
+      function update() {
+        const now = new Date();
+        const midnight = new Date();
+        midnight.setHours(24, 0, 0, 0);
+        const diff = midnight - now;
+
+        const hrs = String(Math.floor(diff / 3600000)).padStart(2, '0');
+        const mins = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+        const secs = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+
+        countdownEl.textContent = `Next refresh in: ${hrs}:${mins}:${secs}`;
+        const passed = (24 * 3600 * 1000 - diff);
+        const percent = (passed / (24 * 3600 * 1000)) * 100;
+        progressBar.style.width = percent + '%';
+
+        if (diff <= 1000) {
+          displayEntries('quotes', quotes);
+          displayEntries('jokes', jokes);
+        }
+      }
+
+      update();
+      setInterval(update, 1000);
+    }
+
+    displayEntries('quotes', quotes);
+    displayEntries('jokes', jokes);
+    startCountdown();
+  </script>
 </body>
 </html>
